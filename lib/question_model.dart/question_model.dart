@@ -1,40 +1,25 @@
-import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
+import 'package:quiz_app/enums/difficulty.dart';
 
-class Question extends Equatable {
-  final String category;
-  final String difficulty;
-  final String question;
-  final String correctAnswer;
-  final List<String> answers;
+class Question {
+  late final String category;
+  late final Type type;
+  late final Difficulty difficulty;
+  late final String question;
+  late final String correct_answer;
+  late final List<dynamic> incorrect_answer;
 
-  const Question({
-    required this.category,
-    required this.difficulty,
-    required this.question,
-    required this.correctAnswer,
-    required this.answers,
-  });
+  Question.fromMap(Map<String, dynamic> data)
+      : category = data['category'],
+        type = data['type'] == 'multiple' ? Type.multiple : Type.boolean,
+        difficulty = data['difficulty'] == 'easy'
+            ? Difficulty.easy
+            : data['difficulty'] == 'medium'
+                ? Difficulty.medium
+                : Difficulty.hard,
+        question = data['question'],
+        correct_answer = data['correct_answer'],
+        incorrect_answer = data['incorrect_answers'];
 
-  @override
-  List<Object> get props => [
-        category,
-        difficulty,
-        question,
-        correctAnswer,
-        answers,
-      ];
-
-  factory Question.fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
-    return Question(
-      category: map['category'] ?? '',
-      difficulty: map['difficulty'] ?? '',
-      question: map['question'] ?? '',
-      correctAnswer: map['correct_answer'] ?? '',
-      answers: List<String>.from(map['incorrect_answers'] ?? [])
-        ..add(map['correct_answer'] ?? '')
-        ..shuffle(),
-    );
-  }
+  static List<Question> fromData(List<Map<String, dynamic>> data) =>
+      data.map((question) => Question.fromMap(question)).toList();
 }
