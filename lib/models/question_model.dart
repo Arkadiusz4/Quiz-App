@@ -1,4 +1,6 @@
 import 'package:quiz_app/enums/difficulty.dart';
+import 'package:quiz_app/enums/type.dart';
+
 
 class Question {
   late final String category;
