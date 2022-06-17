@@ -22,7 +22,7 @@ List<Category> categories = [
   Category(17, "Science & Nature", categoryImage: path + 'science_nature.jpg'),
   Category(18, "Computer", categoryImage: path + 'computer.jpg'),
   Category(19, "Maths", categoryImage: path + 'maths.jpg'),
-  Category(20, "Mythology", categoryImage: path + 'mythology.jpg'),
+  Category(20, "Mythology", categoryImage: path + 'mithology.jpg'),
   Category(21, "Sports", categoryImage: path + 'sports.jpg'),
   Category(22, "Geography", categoryImage: path + 'geography.jpg'),
   Category(23, "History", categoryImage: path + 'history.jpg'),
