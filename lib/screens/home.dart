@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_app/models/category.dart';
 
@@ -16,21 +17,40 @@ class _HomeScreenState extends State<HomeScreen> {
         itemCount: categories.length,
         itemBuilder: (context, index) => _buildList(index),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, mainAxisSpacing: 10, crossAxisSpacing: 10),
+            crossAxisCount: 2, mainAxisSpacing: 5, crossAxisSpacing: 5),
       ),
     );
   }
 
   Widget _buildList(int index) {
     Category category = categories[index];
-    return  Card(
+    return Card(
         semanticContainer: true,
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: Stack(children: [
-          Image.asset(categories[index].categoryImage, fit: BoxFit.fill),
-          Text(categories[index].name)
-        ]),
-      
-    );
+          Container(
+            foregroundDecoration: const BoxDecoration(
+                gradient: LinearGradient(
+              colors: [Colors.transparent, Colors.black],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            )),
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(categories[index].categoryImage),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: -1,
+            child: Text(
+                categories[index].name,
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+          ),
+        ]));
   }
 }
