@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/widgets/dots.dart';
+import 'package:quiz_app/widgets/row_with_dots.dart';
 
 class ResultScreen extends StatefulWidget {
   ResultScreen({Key? key}) : super(key: key);
@@ -39,33 +40,17 @@ class _ResultScreenState extends State<ResultScreen> {
                       child: Column(children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Row(
-                              children: [
-                                Dots(color: Colors.blue),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Column(
-                                  children: const [
-                                    Text(
-                                      '100%',
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.blue),
-                                    ),
-                                    Text(
-                                      'Complete',
-                                      style: TextStyle(
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.w300),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Text('Total Questions'),
+                          children: const [
+                            RowWithDots(
+                                dotsColor: Colors.blue,
+                                textColor: Colors.blue,
+                                text: '100%',
+                                subtext: 'Complete'),
+                            RowWithDots(
+                                dotsColor: Colors.blue,
+                                textColor: Colors.blue,
+                                text: '20',
+                                subtext: 'Total Questions'),
                           ],
                         ),
                         const SizedBox(
@@ -73,9 +58,17 @@ class _ResultScreenState extends State<ResultScreen> {
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text('Correct'),
-                            Text('Wrong'),
+                          children: const [
+                            RowWithDots(
+                                dotsColor: Colors.green,
+                                textColor: Colors.green,
+                                text: '13',
+                                subtext: 'Correct'),
+                            RowWithDots(
+                                dotsColor: Colors.red,
+                                textColor: Colors.red,
+                                text: '7',
+                                subtext: 'Wrong'),
                           ],
                         )
                       ]),
