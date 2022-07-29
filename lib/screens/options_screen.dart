@@ -41,15 +41,15 @@ class _OptionsScreenState extends State<OptionsScreen> {
                     ]),
               ),
             ),
-            SizedBox(
+            SizedBox(///////////////////////////////////////////////////////////////////////////
               height: 500,
             ),
-            TabBarView(children: [
-              Text('Easy'),
-              Text('Easy'),
-              Text('Easy'),
-              Text('Easy'),
-            ]),
+            // TabBarView(children: [
+            //   Text('Easy'),
+            //   Text('Easy'),
+            //   Text('Easy'),
+            //   Text('Easy'),
+            // ]),
           ],
         )),
       ),

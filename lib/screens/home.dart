@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_app/models/category.dart';
 import 'package:quiz_app/screens/options_screen.dart';
+import 'package:quiz_app/screens/result_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen();
@@ -31,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Category category = categories[index];
     return GestureDetector(
       onTap: (() => Navigator.push(
-          context, MaterialPageRoute(builder: (context) => OptionsScreen()))),
+          context, MaterialPageRoute(builder: (context) => ResultScreen()))),
       child: Card(
         semanticContainer: true,
         clipBehavior: Clip.antiAliasWithSaveLayer,
