@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/screens/home.dart';
+import 'package:quiz_app/screens/options_screen.dart';
 import 'package:quiz_app/widgets/column_with_icon.dart';
 import 'package:quiz_app/widgets/row_with_dots.dart';
 
 class ResultScreen extends StatefulWidget {
-  ResultScreen({Key? key}) : super(key: key);
+  const ResultScreen({Key? key, required this.photo}) : super(key: key);
+
+  final String photo;
 
   @override
   State<ResultScreen> createState() => _ResultScreenState();
@@ -28,11 +32,19 @@ class _ResultScreenState extends State<ResultScreen> {
                       left: 0,
                       right: 0,
                       child: Container(
-                        decoration: const BoxDecoration(
-                          color: Colors.amber,
-                          borderRadius: BorderRadius.vertical(
+                        foregroundDecoration: const BoxDecoration(
+                            gradient: LinearGradient(
+                          colors: [Colors.transparent, Color(0xFF01172F)],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        )),
+                        decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.vertical(
                             bottom: Radius.circular(20),
                           ),
+                          image: DecorationImage(
+                              image: AssetImage(widget.photo),
+                              fit: BoxFit.cover),
                         ),
                         width: constraints.maxWidth,
                         height: constraints.maxHeight * 0.6,
@@ -104,16 +116,28 @@ class _ResultScreenState extends State<ResultScreen> {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
-                  ColumnWithIcon(
-                      backgroundColor: Color(0xFFC3DFE0),
-                      icon: Icon(Icons.restart_alt_outlined),
-                      text: 'Play again'),
-                  ColumnWithIcon(
-                      backgroundColor: Color(0xFFC3DFE0),
-                      icon: Icon(Icons.home),
-                      text: 'Home'),
-                  ColumnWithIcon(
+                children: [
+                  GestureDetector(
+                    onTap: (() => Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => OptionsScreen()))),
+                    child: const ColumnWithIcon(
+                        backgroundColor: Color(0xFFC3DFE0),
+                        icon: Icon(Icons.restart_alt_outlined),
+                        text: 'Play again'),
+                  ),
+                  GestureDetector(
+                    onTap: (() => Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()))),
+                    child: const ColumnWithIcon(
+                        backgroundColor: Color(0xFFC3DFE0),
+                        icon: Icon(Icons.home),
+                        text: 'Home'),
+                  ),
+                  const ColumnWithIcon(
                       backgroundColor: Color(0xFFC3DFE0),
                       icon: Icon(Icons.remove_red_eye),
                       text: 'Show answer'),
