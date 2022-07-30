@@ -33,7 +33,11 @@ class _HomeScreenState extends State<HomeScreen> {
     Category category = categories[index];
     return GestureDetector(
       onTap: (() => Navigator.push(
-          context, MaterialPageRoute(builder: (context) => ResultScreen()))),
+          context,
+          MaterialPageRoute(
+              builder: (_) => ResultScreen(
+                    photo: category.categoryImage,
+                  )))),
       child: Card(
         semanticContainer: true,
         clipBehavior: Clip.antiAliasWithSaveLayer,
