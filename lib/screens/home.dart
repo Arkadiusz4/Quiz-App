@@ -16,6 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFC3DFE0),
       body: GridView.builder(
         itemCount: categories.length,
         itemBuilder: (context, index) => _buildList(index),
@@ -41,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               foregroundDecoration: const BoxDecoration(
                   gradient: LinearGradient(
-                colors: [Colors.transparent, Colors.black],
+                colors: [Colors.transparent, Color(0xFF01172F)],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               )),
