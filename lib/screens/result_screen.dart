@@ -24,6 +24,7 @@ class _ResultScreenState extends State<ResultScreen> {
             children: [
               SizedBox(
                 height: constraints.maxHeight * .6 + 70,
+                width: constraints.maxWidth,
                 child: Stack(
                   children: [
                     Positioned(
@@ -31,78 +32,80 @@ class _ResultScreenState extends State<ResultScreen> {
                       bottom: 70,
                       left: 0,
                       right: 0,
-                      child: Container(
-                        foregroundDecoration: const BoxDecoration(
-                            gradient: LinearGradient(
-                          colors: [Colors.transparent, Color(0xFF01172F)],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                        )),
-                        decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.vertical(
-                            bottom: Radius.circular(20),
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.vertical(
+                            bottom: Radius.circular(10)),
+                        child: Container(
+                          foregroundDecoration: const BoxDecoration(
+                              gradient: LinearGradient(
+                            colors: [Colors.transparent, Color(0xFF01172F)],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                          )),
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage(widget.photo),
+                                fit: BoxFit.cover),
                           ),
-                          image: DecorationImage(
-                              image: AssetImage(widget.photo),
-                              fit: BoxFit.cover),
+                          width: constraints.maxWidth,
+                          height: constraints.maxHeight * 0.6,
                         ),
-                        width: constraints.maxWidth,
-                        height: constraints.maxHeight * 0.6,
                       ),
                     ),
                     Positioned(
-                      top: constraints.maxHeight * 0.5,
+                      top: constraints.maxHeight * 0.55,
                       height: 100,
                       left: 10,
                       right: 10,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Card(
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              color: Color(0xFFF4F3EE),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 5),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: const [
-                                      RowWithDots(
-                                          dotsColor: Colors.blue,
-                                          textColor: Colors.blue,
-                                          text: '100%',
-                                          subtext: 'Complete'),
-                                      RowWithDots(
-                                          dotsColor: Colors.blue,
-                                          textColor: Colors.blue,
-                                          text: '20',
-                                          subtext: 'Total Questions'),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: const [
-                                      RowWithDots(
-                                          dotsColor: Colors.green,
-                                          textColor: Colors.green,
-                                          text: '13',
-                                          subtext: 'Correct'),
-                                      RowWithDots(
-                                          dotsColor: Colors.red,
-                                          textColor: Colors.red,
-                                          text: '7',
-                                          subtext: 'Wrong'),
-                                    ],
-                                  )
-                                ],
-                              ),
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: const Color(0xFFF4F3EE),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 5),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: const [
+                                    RowWithDots(
+                                        dotsColor: Colors.blue,
+                                        textColor: Colors.blue,
+                                        text: '100%',
+                                        subtext: 'Complete'),
+                                    RowWithDots(
+                                        dotsColor: Colors.blue,
+                                        textColor: Colors.blue,
+                                        text: '20',
+                                        subtext: 'Total Questions'),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: const [
+                                    RowWithDots(
+                                        dotsColor: Colors.green,
+                                        textColor: Colors.green,
+                                        text: '13',
+                                        subtext: 'Correct'),
+                                    RowWithDots(
+                                        dotsColor: Colors.red,
+                                        textColor: Colors.red,
+                                        text: '7',
+                                        subtext: 'Wrong'),
+                                  ],
+                                )
+                              ],
                             ),
                           ),
                         ),
@@ -112,7 +115,7 @@ class _ResultScreenState extends State<ResultScreen> {
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 40,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
